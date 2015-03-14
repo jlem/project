@@ -33,18 +33,18 @@ class CreateTables extends Migration {
 			$table->timestamp('created_at');
 		});
 
-		Schema::dropIfExists('companies');
-		Schema::create('companies', function($table) {
-			$table->increments();
+		Schema::dropIfExists('clients');
+		Schema::create('clients', function($table) {
+			$table->increments('id');
 			$table->string('name');
 			$table->timestamps();
 		});
 
 		Schema::dropIfExists('projects');
 		Schema::create('projects', function($table) {
-			$table->increments();
+			$table->increments('id');
 			$table->string('name');
-			$table->integer('company_id');
+			$table->integer('client_id');
 			$table->integer('status');
 			$table->integer('type');
 			$table->timestamps();
@@ -52,7 +52,7 @@ class CreateTables extends Migration {
 
 		Schema::dropIfExists('tasks');
 		Schema::create('tasks', function($table) {
-			$table->increments();
+			$table->increments('id');
 			$table->string('name');
 			$table->integer('project_id');
 			$table->integer('status');
@@ -63,7 +63,7 @@ class CreateTables extends Migration {
 
 		Schema::dropIfExists('time_entries');
 		Schema::create('time_entries', function($table) {
-			$table->increments();
+			$table->increments('id');
 			$table->string('task_id');
 			$table->integer('project_id');
 			$table->integer('user_id');
@@ -73,11 +73,20 @@ class CreateTables extends Migration {
 
 		Schema::dropIfExists('atoms');
 		Schema::create('atoms', function($table) {
-			$table->increments();
+			$table->increments('id');
 			$table->string('task_id');
 			$table->integer('project_id');
 			$table->string('key');
 			$table->string('value');
+			$table->timestamps();
+		});
+
+		Schema::dropIfExists('project_users');
+		Schema::create('project_users', function($table) {
+			$table->increments('id');
+			$table->string('project_id');
+			$table->integer('user_id');
+			$table->string('role');
 			$table->timestamps();
 		});
 	}
@@ -91,7 +100,7 @@ class CreateTables extends Migration {
 	{
 		Schema::drop('users');
 		Schema::drop('password_resets');
-		Schema::drop('companies');
+		Schema::drop('clients');
 		Schema::drop('projects');
 		Schema::drop('tasks');
 		Schema::drop('time_entries');

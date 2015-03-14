@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Faker\Factory;
 use App\User;
+use App\Client;
+use App\Domain\Project\Project;
 
 class DatabaseSeeder extends Seeder {
 
@@ -20,10 +22,13 @@ class DatabaseSeeder extends Seeder {
 		$this->faker = Factory::create();
 		$this->users();
 		$this->clients();
+		$this->projects();
+		$this->userProjects();
 	}
 
 	public function users()
 	{
+		DB::table('users')->truncate();
 		User::create([
 			'first_name' => 'Jon',
 			'last_name' => 'LeMaitre',
@@ -35,8 +40,9 @@ class DatabaseSeeder extends Seeder {
 
 	public function clients()
 	{
+		DB::table('clients')->truncate();
 		for($i=0; $i<51; $i++) {
-			Company::create([
+			Client::create([
 				'name' => $this->faker->company
 			]);
 		}
@@ -44,6 +50,7 @@ class DatabaseSeeder extends Seeder {
 
 	public function projects()
 	{
+		DB::table('projects')->truncate();
 		$projects = [
 			'Access Health Connecticut',
 			'AgaMatrix Maintenance',
@@ -107,5 +114,26 @@ class DatabaseSeeder extends Seeder {
 				'type' => 1
 			]);
 		}
+	}
+
+	public function userProjects()
+	{
+		DB::table('project_users')->truncate();
+		DB::table('project_users')->insert([
+		[
+			'project_id' => 3,
+			'user_id' => 1,
+			'role' => 2
+		],
+		[
+			'project_id' => 6,
+			'user_id' => 1,
+			'role' => 1
+		],
+		[
+			'project_id' => 15,
+			'user_id' => 1,
+			'role' => 4
+		]]);
 	}
 }

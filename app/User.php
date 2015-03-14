@@ -5,10 +5,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use App\Domain\Project\Project;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword;
+
+	public function projects()
+	{
+		$this->hasMany(Project::class);
+	}
 
 	/**
 	 * The database table used by the model.
