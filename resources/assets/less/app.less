@@ -1,1 +1,204 @@
+html {
+    height: 100%;
+}
 
+a {
+    color: #e31936;
+    text-decoration: none;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: "Roboto Condensed";
+    font-weight: 400;
+    color: #636363;
+}
+
+.selected {
+    color: #444 !important;
+    font-weight: 400 !important;
+}
+
+h1 {
+    margin: 0;
+    margin-bottom: 30px;
+    font-weight: 100;
+}
+
+#navbar {
+    border-bottom: 1px solid #e2e2e2;
+    padding: 15px;
+    height: 20px;
+    background: #fff;
+    width: 100%;
+}
+
+.navbar-section {
+    float: left;
+}
+
+#navbar #logo {
+    width: 22%;
+}
+
+#navbar #calendar {
+    width: 47%;
+    text-align: center;
+}
+
+#calendar a {
+    font-weight: 100;
+    display: inline-block;
+    margin: 0 30px;
+    color: #636363;
+}
+
+#calendar a.active {
+    font-weight: 400 !important;
+    color: #e31936;
+}
+
+#navbar #nav {
+    width: 31%;
+}
+
+.panel {
+    float: left;
+    height: 100%;
+    border-left: 1px solid #e2e2e2;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+#sidebar {
+    width: 22%;
+    padding: 50px;
+    font-size: 18px;
+}
+
+#ask-atom input,
+#project-search {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    margin-bottom: 50px;
+    font-weight: 100 !important;
+    font-family: "Roboto Condensed" !important;
+}
+
+.sidebar-heading,
+.list-heading {
+    font-weight: 300;
+    border-bottom: 1px solid #e2e2e2;
+    font-size: 18px;
+}
+
+#sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin: 20px 0 35px 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+#sidebar ul li {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#sidebar ul li a {
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+#panel {
+    width: 78%;
+}
+
+#list {
+    width: 60%;
+    float: left;
+    border-right: 1px solid #e2e2e2;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#details {
+    width: 40%;
+    float: left;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 50px;
+}
+
+#list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    font-size: 14px;
+    margin-bottom: 50px;
+}
+
+#list table th,
+#list table td {
+    font-weight: 300;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 8px 0;
+}
+
+#list table th {
+    font-weight: 400;
+}
+
+.list-panel {
+    padding: 50px;
+    box-sizing: padding-box;
+}
+
+.list-panel,
+.task-panel {
+    display: none;
+}
+
+.list-panel.absolute {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#home-tasks {
+    display: block;
+}
+
+ul#hours,
+ul#minutes {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 60px;
+}
+
+ul#hours li,
+ul#minutes li {
+    float: left;
+    display: inline-block;
+    padding: 10px 15px;
+    border: 1px solid #e2e2e2;
+    font-size: 20px;
+    font-weight: 100;
+    margin-right: -1px;
+}
+
+.time-task {
+    border-bottom: 1px solid #e2e2e2;
+}

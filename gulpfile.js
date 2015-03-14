@@ -1,5 +1,5 @@
 var elixir = require('laravel-elixir');
-
+require('laravel-elixir-angular');
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -13,4 +13,5 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.less('app.less');
+    mix.angular('resources/assets/angular/', 'public/js/angular', "application.js");
 });
