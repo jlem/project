@@ -5,6 +5,7 @@
     "laravel-elixir": "*"
   },
   "dependencies": {
+    "angular-route": "^1.3.14",
     "laravel-elixir-angular": "^0.1.1"
   }
 }

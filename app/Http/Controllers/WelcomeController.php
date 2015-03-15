@@ -9,7 +9,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('angular.app');
+		return view('main');
 	}
 
 }
