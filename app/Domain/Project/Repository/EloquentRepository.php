@@ -3,7 +3,7 @@
 use App\Domain\Project\Project;
 use App\Domain\Criteria;
 
-class EloquentRepository implements Repository
+class EloquentRepository implements RepositoryInterface
 {
     protected $Gateway;
 
@@ -25,7 +25,7 @@ class EloquentRepository implements Repository
 
         foreach($Criteria as $C) {
             if ($C instanceof Criteria) {
-                $this->Gateway = $this->Criteria->apply($this->Gateway, $this);
+                $this->Gateway = $C->apply($this->Gateway, $this);
             }
         }
 

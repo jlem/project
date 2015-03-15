@@ -1,5 +1,5 @@
 html {
-  height: 100%;
+  height: auto;
 }
 a {
   color: #e31936;
@@ -8,10 +8,16 @@ a {
 body {
   padding: 0;
   margin: 0;
-  height: 100%;
   font-family: "Roboto Condensed";
   font-weight: 400;
   color: #636363;
+}
+#body {
+  height: auto;
+}
+.container {
+  background: rgba(0, 0, 0, 0.1);
+  clear: both;
 }
 .selected {
   color: #444 !important;
@@ -39,6 +45,10 @@ h1 {
   width: 47%;
   text-align: center;
 }
+ul.projects li a.active {
+  color: #333;
+  font-weight: 700 !important;
+}
 #calendar a {
   font-weight: 100;
   display: inline-block;
@@ -54,8 +64,7 @@ h1 {
 }
 .panel {
   float: left;
-  height: 100%;
-  border-left: 1px solid #e2e2e2;
+  border-right: 1px solid #e2e2e2;
   box-sizing: border-box;
   background-color: #fff;
 }
@@ -104,14 +113,12 @@ h1 {
   width: 60%;
   float: left;
   border-right: 1px solid #e2e2e2;
-  height: 100%;
   box-sizing: border-box;
   position: relative;
 }
 #details {
   width: 40%;
   float: left;
-  height: 100%;
   box-sizing: border-box;
   padding: 50px;
 }
@@ -143,7 +150,6 @@ h1 {
 .list-panel.absolute {
   position: absolute;
   top: 0;
-  height: 100%;
   background: #fff;
   width: 100%;
   box-sizing: border-box;

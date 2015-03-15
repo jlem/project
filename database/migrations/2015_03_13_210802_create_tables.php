@@ -81,8 +81,8 @@ class CreateTables extends Migration {
 			$table->timestamps();
 		});
 
-		Schema::dropIfExists('project_users');
-		Schema::create('project_users', function($table) {
+		Schema::dropIfExists('project_user');
+		Schema::create('project_user', function($table) {
 			$table->increments('id');
 			$table->string('project_id');
 			$table->integer('user_id');
@@ -104,6 +104,7 @@ class CreateTables extends Migration {
 		Schema::drop('projects');
 		Schema::drop('tasks');
 		Schema::drop('time_entries');
+		Schema:drop('project_user');
 		Schema::drop('atoms');
 	}
 

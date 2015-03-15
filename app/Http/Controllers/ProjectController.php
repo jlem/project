@@ -1,13 +1,26 @@
 <?php namespace App\Http\Controllers;
 
+use App\Domain\Project\Repository\EloquentRepository as Repository;
+use App\Domain\Project\Criteria\BelongsToUser;
+use App\User;
+
 class ProjectController extends Controller {
+
+    protected $Repository;
+
+    public function __construct(Repository $Repository)
+    {
+        $this->Repository = $Repository;
+    }
 
 	public function index()
 	{
-		return [
-			['name' => 'Project 1'],
-			['name' => 'Project 2']
-		];
+        return $this->Repository->all();
 	}
 
+    public function byUser()
+    {
+        $User = User::find(1);
+        return $this->Repository->findByCriteria(new BelongsToUser($User));
+    }
 }

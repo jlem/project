@@ -118,8 +118,8 @@ class DatabaseSeeder extends Seeder {
 
 	public function userProjects()
 	{
-		DB::table('project_users')->truncate();
-		DB::table('project_users')->insert([
+		DB::table('project_user')->truncate();
+		DB::table('project_user')->insert([
 		[
 			'project_id' => 3,
 			'user_id' => 1,

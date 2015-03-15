@@ -4,7 +4,12 @@
 		return {
 			all : function(model) {
 				$http.get('/project').success(function(data) {
-					model.projects = data;
+					model.allProjects = data;
+				});
+			},
+			authUser : function(model) {
+				$http.get('/user/projects').success(function(data) {
+					model.authUserProjects = data;
 				});
 			}
 		};

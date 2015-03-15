@@ -13,3 +13,4 @@
 
 Route::get('/', 'WelcomeController@index');
 Route::resource('project', 'ProjectController');
+Route::get('/user/projects', 'ProjectController@byUser');

@@ -1,6 +1,6 @@
 <?php namespace App\Domain\Project\Repository;
 
-interface Repository
+interface RepositoryInterface
 {
     public function all();
     public function findByCriteria($Criteria);
