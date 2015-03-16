@@ -10,17 +10,17 @@
         <script src="/js/angular/angular-route.min.js"></script>
         <script src="/js/angular/application.js"></script>
     </head>
-    <body>
+    <body ng-controller="MainController">
         <div id="header">
             <div id="logo" class="left column">
                 <img src="/images/logo.png" />
             </div>
             <div id="calendar" class="center column">
-                <a href="#" id="monday">monday 3.9</a>
-                <a href="#" id="tuesday">tuesday 3.10</a>
-                <a href="#" id="wednesday">wednesday 3.11</a>
-                <a href="#" id="thursday">thursday 3.12</a>
-                <a href="#" id="friday" class="active">friday 3.13</a>
+                <a href="#" id="monday" ng-click="model.setContext('time')">monday 3.9</a>
+                <a href="#" id="tuesday" ng-click="model.setContext('time')">tuesday 3.10</a>
+                <a href="#" id="wednesday" ng-click="model.setContext('time')">wednesday 3.11</a>
+                <a href="#" id="thursday" ng-click="model.setContext('time')">thursday 3.12</a>
+                <a href="#" id="friday" class="active" ng-click="model.setContext('time')">friday 3.13</a>
             </div>
             <div id="navigation" class="right column"></div>
         </div>
@@ -32,20 +32,36 @@
                 <div class="sidebar-heading">My Projects</div>
                 <ul class="projects">
                     <li ng-repeat="project in model.authUserProjects">
-                        <a id="project-pierce" href ng-click="model.setActiveProject(project.id)" ng-class="{ active:model.isActiveProject(project.id) }">{{ project.name }}</a>
+                        <a href="#/project/{{project.id}}" ng-class="{ active:model.isActiveProject(project.id) }">{{ project.name }}</a>
                     </li>
                 </ul>
 
                 <div class="sidebar-heading">All Projects</div>
                 <ul class="projects">
                     <li ng-repeat="project in model.allProjects">
-                        <a id="project-pierce" href ng-click="model.setActiveProject(project.id)" ng-class="{ active:model.isActiveProject(project.id) }">{{ project.name }}</a>
+                        <a href="#/project/{{project.id}}" ng-class="{ active:model.isActiveProject(project.id) }">{{ project.name }}</a>
                     </li>
                 </ul>
             </div>
-            <div id="panel1" class="center panel"></div>
-            <div id="panel2" class="right panel"></div>
+            <div id="panel1" class="center panel" ng-switch="model.context">
+                <div ng-switch-when="home">
+                    <my-task-list></my-task-list>
+                </div>
+                <div ng-switch-when="project">
+                    <project-tasks></project-tasks>
+                </div>
+                <div ng-switch-when="time">Track time</div>
+            </div>
+            <div id="panel2" class="right panel" ng-switch="model.rightContext">
+                <div ng-switch-when="home">???</div>
+                <div ng-switch-when="project">
+                    <project-details></project-details>
+                </div>
+                <div ng-switch-when="task">
+                    <task-details></task-details>
+                </div>
+            </div>
         </div>
-        <div id="footer">hey</div>
+        <div id="footer"><ng-view></ng-view></div>
     </body>
 </html>

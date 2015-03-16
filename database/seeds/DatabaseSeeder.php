@@ -6,6 +6,7 @@ use Faker\Factory;
 use App\User;
 use App\Client;
 use App\Domain\Project\Project;
+use App\Domain\Task\Task;
 
 class DatabaseSeeder extends Seeder {
 
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder {
 		$this->clients();
 		$this->projects();
 		$this->userProjects();
+		$this->tasks();
 	}
 
 	public function users()
@@ -135,5 +137,29 @@ class DatabaseSeeder extends Seeder {
 			'user_id' => 1,
 			'role' => 4
 		]]);
+	}
+
+	public function tasks()
+	{
+		DB::table('tasks')->truncate();
+		$Projects = Project::all();
+		$User = User::find(1);
+		$Projects->each(function($Project) use ($User) {
+			for($i=1; $i<20; $i++) {
+
+				$user_id = null;
+
+				if ($User->belongsToProject($Project) && $this->faker->boolean(33)) {
+					$user_id = $User->id;
+				}
+
+				Task::create([
+					'name' => $this->faker->catchPhrase,
+					'owner' => $user_id,
+					'project_id' => $Project->id,
+					'status' => 1,
+				]);
+			}
+		});
 	}
 }

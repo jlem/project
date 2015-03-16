@@ -6,6 +6,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use App\Domain\Project\Project;
+use App\Domain\Task\Task;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -14,6 +15,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function projects()
 	{
 		return $this->belongsToMany(Project::class);
+	}
+
+	public function tasks()
+	{
+		return $this->hasMany(Task::class, 'owner');
+	}
+
+	public function belongsToProject(Project $Project) 
+	{
+		return in_array($Project->id, $this->projects->lists('id'));
 	}
 
 	/**

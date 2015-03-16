@@ -1,8 +1,17 @@
 (function() {
-	angular.module('app', ['ngRoute'])
-	.controller("SidebarController", ["$scope", "ProjectRepository", "SidebarViewModel", function($scope, ProjectRepository, SidebarViewModel) {
-		$scope.model = SidebarViewModel;
-		ProjectRepository.all($scope.model);
-        ProjectRepository.authUser($scope.model);
+	var app = angular.module('app', ['ngRoute']);
+	app.config(['$routeProvider', function($routeProvider) {
+		$routeProvider.
+			when('/project/:projectID', {
+				templateUrl: '/partials/null.html',
+				controller: 'ProjectController'
+			}).
+			when('/project/:projectID/task/:taskID', {
+				templateUrl: '/partials/null.html',
+				controller: 'TaskController'
+			})
+			.otherwise({
+		        redirectTo: '/'
+		    });
 	}]);
 })();

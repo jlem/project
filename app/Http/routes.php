@@ -13,4 +13,6 @@
 
 Route::get('/', 'WelcomeController@index');
 Route::resource('project', 'ProjectController');
+Route::resource('task', 'TaskController');
 Route::get('/user/projects', 'ProjectController@byUser');
+Route::get('/user/tasks', 'TaskController@byUser');

@@ -18,9 +18,14 @@ class ProjectController extends Controller {
         return $this->Repository->all();
 	}
 
+    public function show($id)
+    {
+        return $this->Repository->findByID($id);
+    }
+
     public function byUser()
     {
         $User = User::find(1);
-        return $this->Repository->findByCriteria(new BelongsToUser($User));
+        return $this->Repository->findByUser($User);
     }
 }

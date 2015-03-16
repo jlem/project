@@ -7,6 +7,12 @@
 					model.allProjects = data;
 				});
 			},
+			find : function(id, model) {
+				$http.get('/project/'+id).success(function(data) {
+					model.currentProject = {};
+					model.currentProject = data;
+				});
+			},
 			authUser : function(model) {
 				$http.get('/user/projects').success(function(data) {
 					model.authUserProjects = data;

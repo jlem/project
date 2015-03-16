@@ -2,6 +2,7 @@
 
 use App\Domain\Project\Project;
 use App\Domain\Criteria;
+use App\User;
 
 class EloquentRepository implements RepositoryInterface
 {
@@ -15,6 +16,16 @@ class EloquentRepository implements RepositoryInterface
     public function all()
     {
         return $this->Gateway->all();
+    }
+
+    public function findByID($id)
+    {
+        return $this->Gateway->with('tasks.owner', 'users')->find($id);
+    }
+
+    public function findByUser(User $User)
+    {
+        return $User->projects;
     }
 
     public function findByCriteria($Criteria)
