@@ -9,8 +9,7 @@
         var projectID = $routeParams.projectID;
         var taskID = $routeParams.taskID;
 
-        ApplicationState.setContext('project');
-        ApplicationState.setRightContext('task');
+        ApplicationState.changeToTaskContext();
 
         ProjectRepository.find(projectID, function(result) {
             ApplicationState.setCurrentProject(result);

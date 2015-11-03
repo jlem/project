@@ -19,9 +19,9 @@
         return {
 
             // Context
-            setContext: setContext,
+            changeToProjectContext: changeToProjectContext,
+            changeToTaskContext: changeToTaskContext,
             getContext: getContext,
-            setRightContext: setRightContext,
             getRightContext: getRightContext,
 
             // Projects
@@ -41,16 +41,18 @@
         };
 
         // Implementation
-        function setContext(context) {
-            state.context = context;
+        function changeToProjectContext() {
+            state.context = 'project';
+            state.rightContext = 'project';
+        }
+
+        function changeToTaskContext() {
+            state.context = 'project';
+            state.rightContext = 'task';
         }
 
         function getContext() {
             return state.context;
-        }
-
-        function setRightContext(context) {
-            state.rightContext = context;
         }
 
         function getRightContext() {

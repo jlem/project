@@ -8,8 +8,7 @@
     function ProjectController($routeParams, ApplicationState, ProjectRepository) {
         var projectID = $routeParams.projectID;
 
-        ApplicationState.setContext('project');
-        ApplicationState.setRightContext('project');
+        ApplicationState.changeToProjectContext();
 
         ProjectRepository.find(projectID, function(result) {
             ApplicationState.setCurrentProject(result);
