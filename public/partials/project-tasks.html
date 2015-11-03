@@ -1,4 +1,4 @@
-<h1>{{ model.currentProject.name }} Tasks</h1>
+<h1>{{ main.vm.getCurrentProject().name }} Tasks</h1>
 <div class="list-heading">My Tasks</div>
 <table class="task-list">
 	<thead>
@@ -8,7 +8,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="task in model.currentProject.authorizedUserTasks">
+		<tr ng-repeat="task in main.vm.getCurrentProject().authorizedUserTasks">
 			<td>{{task.owner.first_name}}</td>
 			<td><task-link></task-link></td>
 		</tr>
@@ -24,7 +24,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="task in model.currentProject.tasks">
+		<tr ng-repeat="task in main.vm.getCurrentProject().tasks">
 			<td>{{task.owner.first_name}}</td>
 			<td><task-link></task-link></td>
 		</tr>

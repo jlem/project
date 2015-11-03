@@ -1,6 +1,11 @@
 (function() {
-	angular.module('app')
-	.controller("MainController", ['$scope', 'MainViewModel', function($scope, MainViewModel) {
-		$scope.model = MainViewModel;
-	}]);
+	angular
+        .module('app')
+	    .controller("MainController", MainController);
+
+    MainController.$inject = ['MainViewModel'];
+
+    function MainController(MainViewModel) {
+        this.vm = MainViewModel;
+    }
 })();

@@ -10,17 +10,18 @@
         <script src="/js/angular/angular-route.min.js"></script>
         <script src="/js/angular/application.js"></script>
     </head>
-    <body ng-controller="MainController">
+    <body ng-controller="MainController as main">
         <div id="header">
+            <ng-view></ng-view>
             <div id="logo" class="left column">
                 <img src="/images/logo.png" />
             </div>
             <div id="calendar" class="center column">
-                <a href="#" id="monday" ng-click="model.setContext('time')">monday 3.9</a>
-                <a href="#" id="tuesday" ng-click="model.setContext('time')">tuesday 3.10</a>
-                <a href="#" id="wednesday" ng-click="model.setContext('time')">wednesday 3.11</a>
-                <a href="#" id="thursday" ng-click="model.setContext('time')">thursday 3.12</a>
-                <a href="#" id="friday" class="active" ng-click="model.setContext('time')">friday 3.13</a>
+                <a href="#" id="monday" ng-click="main.vm.setContext('time')">monday 3.9</a>
+                <a href="#" id="tuesday" ng-click="main.vm.setContext('time')">tuesday 3.10</a>
+                <a href="#" id="wednesday" ng-click="main.vm.setContext('time')">wednesday 3.11</a>
+                <a href="#" id="thursday" ng-click="main.vm.setContext('time')">thursday 3.12</a>
+                <a href="#" id="friday" class="active" ng-click="main.vm.setContext('time')">friday 3.13</a>
             </div>
             <div id="navigation" class="right column"></div>
         </div>
@@ -31,19 +32,19 @@
                 </div>
                 <div class="sidebar-heading">My Projects</div>
                 <ul class="projects">
-                    <li ng-repeat="project in model.authUserProjects">
-                        <a href="#/project/{{project.id}}" ng-class="{ active:model.isActiveProject(project.id) }">{{ project.name }}</a>
+                    <li ng-repeat="project in main.vm.getAuthUserProjects()">
+                        <a href="#/project/{{project.id}}" ng-class="{ active:main.vm.isActiveProject(project.id) }">{{ project.name }}</a>
                     </li>
                 </ul>
 
                 <div class="sidebar-heading">All Projects</div>
                 <ul class="projects">
-                    <li ng-repeat="project in model.allProjects">
-                        <a href="#/project/{{project.id}}" ng-class="{ active:model.isActiveProject(project.id) }">{{ project.name }}</a>
+                    <li ng-repeat="project in main.vm.getAllProjects()">
+                        <a href="#/project/{{project.id}}" ng-class="{ active:main.vm.isActiveProject(project.id) }">{{ project.name }}</a>
                     </li>
                 </ul>
             </div>
-            <div id="panel1" class="center panel" ng-switch="model.context">
+            <div id="panel1" class="center panel" ng-switch="main.vm.getContext()">
                 <div ng-switch-when="home">
                     <my-task-list></my-task-list>
                 </div>
@@ -52,7 +53,7 @@
                 </div>
                 <div ng-switch-when="time">Track time</div>
             </div>
-            <div id="panel2" class="right panel" ng-switch="model.rightContext">
+            <div id="panel2" class="right panel" ng-switch="main.vm.getRightContext()">
                 <div ng-switch-when="home">???</div>
                 <div ng-switch-when="project">
                     <project-details></project-details>
@@ -62,6 +63,6 @@
                 </div>
             </div>
         </div>
-        <div id="footer"><ng-view></ng-view></div>
+        <div id="footer"></div>
     </body>
 </html>

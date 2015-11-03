@@ -104,7 +104,7 @@ class CreateTables extends Migration {
 		Schema::drop('projects');
 		Schema::drop('tasks');
 		Schema::drop('time_entries');
-		Schema:drop('project_user');
+		Schema::drop('project_user');
 		Schema::drop('atoms');
 	}
 
