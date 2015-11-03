@@ -3,14 +3,16 @@
         .module('app')
 	    .controller("ProjectController", ProjectController);
 
-    ProjectController.$inject = ["$scope", "$routeParams", "ApplicationState", "ProjectRepository"];
+    ProjectController.$inject = ["$routeParams", "ApplicationState", "ProjectRepository"];
 
-    function ProjectController($scope, $routeParams, ApplicationState, ProjectRepository) {
+    function ProjectController($routeParams, ApplicationState, ProjectRepository) {
         var projectID = $routeParams.projectID;
-        $scope.projectID = projectID;
+
         ApplicationState.setContext('project');
         ApplicationState.setRightContext('project');
-        ApplicationState.setActiveProject(projectID);
-        ProjectRepository.find(projectID, ApplicationState);
+
+        ProjectRepository.find(projectID, function(result) {
+            ApplicationState.setCurrentProject(result);
+        });
     }
 })();

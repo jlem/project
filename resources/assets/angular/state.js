@@ -10,11 +10,9 @@
             context: "home",
             rightContext: "home",
             currentProject: {},
-            activeProject: null,
             currentTask: {},
             allProjects: [],
-            authUserProjects: [],
-            activeTask: null
+            authUserProjects: []
         };
 
         // API
@@ -28,8 +26,6 @@
 
             // Projects
             isActiveProject: isActiveProject,
-            setActiveProject: setActiveProject,
-            getActiveProject: getActiveProject,
             setCurrentProject: setCurrentProject,
             getCurrentProject: getCurrentProject,
             setAllProjects: setAllProjects,
@@ -41,8 +37,6 @@
             isActiveTask: isActiveTask,
             getCurrentTask: getCurrentTask,
             setCurrentTask: setCurrentTask,
-            setActiveTask: setActiveTask,
-            getActiveTask: getActiveTask,
             getTaskLink: getTaskLink
         };
 
@@ -64,15 +58,7 @@
         }
 
         function isActiveProject(index) {
-            return this.getActiveProject() == index && this.getContext() == "project";
-        }
-
-        function setActiveProject(index) {
-            state.activeProject = index;
-        }
-
-        function getActiveProject() {
-            return state.activeProject;
+            return this.getCurrentProject().id == index && this.getContext() == "project";
         }
 
         function setCurrentProject(project) {
@@ -100,15 +86,7 @@
         }
 
         function isActiveTask(index) {
-            return this.getActiveTask() == index && this.getRightContext() == "task";
-        }
-
-        function setActiveTask(index) {
-            state.activeTask = index;
-        }
-
-        function getActiveTask() {
-            return state.activeTask;
+            return this.getCurrentTask().id == index && this.getRightContext() == "task";
         }
 
         function setAuthUserProjects(projects) {

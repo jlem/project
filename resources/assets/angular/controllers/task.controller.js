@@ -8,14 +8,16 @@
     function TaskController($scope, $routeParams, ApplicationState, ProjectRepository, TaskRepository) {
         var projectID = $routeParams.projectID;
         var taskID = $routeParams.taskID;
-        $scope.projectID = projectID;
-        $scope.taskID = taskID;
 
         ApplicationState.setContext('project');
         ApplicationState.setRightContext('task');
-        ApplicationState.setActiveProject(projectID);
-        ApplicationState.setActiveTask(taskID);
-        ProjectRepository.find(projectID, ApplicationState);
-        TaskRepository.find(taskID, ApplicationState);
+
+        ProjectRepository.find(projectID, function(result) {
+            ApplicationState.setCurrentProject(result);
+        });
+
+        TaskRepository.find(taskID, function(result) {
+            ApplicationState.setCurrentTask(result);
+        });
     }
 })();

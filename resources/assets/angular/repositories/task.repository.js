@@ -16,28 +16,20 @@
         };
 
         // Implementation
-        function all(state) {
-            $http.get('/task').success(function(data) {
-                state.setAllProjects(data);
-            });
+        function all(success) {
+            $http.get('/task').success(success);
         }
 
-        function find(taskID, state) {
-            $http.get('/task/'+taskID).success(function(data) {
-                state.setCurrentTask(data);
-            });
+        function find(taskID, success) {
+            $http.get('/task/'+taskID).success(success);
         }
 
-        function byProject(id, state) {
-            $http.get('/project/'+id+'/tasks').success(function(data) {
-                state.tasks = data;
-            });
+        function byProject(id, success) {
+            $http.get('/project/'+id+'/tasks').success(success);
         }
 
         function authUser(model) {
-            $http.get('/user/tasks').success(function(data) {
-                model.authUserTasks = data;
-            });
+            $http.get('/user/tasks').success(success);
         }
     }
 })();

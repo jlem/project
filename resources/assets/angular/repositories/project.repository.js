@@ -15,22 +15,16 @@
         };
 
         // Implementation
-        function all(state) {
-            $http.get('/project').success(function(data) {
-                state.setAllProjects(data);
-            });
+        function all(success) {
+            $http.get('/project').success(success);
         }
 
-        function find(id, state) {
-            $http.get('/project/'+id).success(function(data) {
-                state.setCurrentProject(data);
-            });
+        function find(id, success) {
+            $http.get('/project/'+id).success(success);
         }
 
-        function authUser(state) {
-            $http.get('/user/projects').success(function(data) {
-                state.setAuthUserProjects(data);
-            });
+        function authUser(success) {
+            $http.get('/user/projects').success(success);
         }
     }
 
