@@ -1,9 +1,9 @@
 (function() {
-	angular
+    angular
         .module('app')
-	    .factory('MainViewModel', MainViewModel);
+        .factory('ApplicationState', ApplicationState);
 
-    function MainViewModel() {
+    function ApplicationState() {
 
         // Private State
         var state = {

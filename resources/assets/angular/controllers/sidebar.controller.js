@@ -3,10 +3,10 @@
         .module('app')
 	    .controller("SidebarController", SidebarController);
 
-    SidebarController.$inject = ['$scope', 'ProjectRepository', 'MainViewModel'];
+    SidebarController.$inject = ['$scope', 'ProjectRepository', 'ApplicationState'];
 
-    function SidebarController($scope, ProjectRepository, MainViewModel) {
-        ProjectRepository.all(MainViewModel);
-        ProjectRepository.authUser(MainViewModel);
+    function SidebarController($scope, ProjectRepository, ApplicationState) {
+        ProjectRepository.all(ApplicationState);
+        ProjectRepository.authUser(ApplicationState);
     }
 })();

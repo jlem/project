@@ -16,14 +16,13 @@
             <div id="logo" class="left column">
                 <img src="/images/logo.png" />
             </div>
-            <div id="calendar" class="center column">
+            <div id="calendar" class="column">
                 <a href="#" id="monday" ng-click="main.vm.setContext('time')">monday 3.9</a>
                 <a href="#" id="tuesday" ng-click="main.vm.setContext('time')">tuesday 3.10</a>
                 <a href="#" id="wednesday" ng-click="main.vm.setContext('time')">wednesday 3.11</a>
                 <a href="#" id="thursday" ng-click="main.vm.setContext('time')">thursday 3.12</a>
                 <a href="#" id="friday" class="active" ng-click="main.vm.setContext('time')">friday 3.13</a>
             </div>
-            <div id="navigation" class="right column"></div>
         </div>
         <div id="content">
             <div id="sidebar" class="left panel" ng-controller="SidebarController">

@@ -15,21 +15,21 @@
         };
 
         // Implementation
-        function all(model) {
+        function all(state) {
             $http.get('/project').success(function(data) {
-                model.setAllProjects(data);
+                state.setAllProjects(data);
             });
         }
 
-        function find(id, model) {
+        function find(id, state) {
             $http.get('/project/'+id).success(function(data) {
-                model.setCurrentProject(data);
+                state.setCurrentProject(data);
             });
         }
 
-        function authUser(model) {
+        function authUser(state) {
             $http.get('/user/projects').success(function(data) {
-                model.setAuthUserProjects(data);
+                state.setAuthUserProjects(data);
             });
         }
     }

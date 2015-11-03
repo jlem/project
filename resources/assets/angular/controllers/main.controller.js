@@ -3,9 +3,9 @@
         .module('app')
 	    .controller("MainController", MainController);
 
-    MainController.$inject = ['MainViewModel'];
+    MainController.$inject = ['ApplicationState'];
 
-    function MainController(MainViewModel) {
-        this.vm = MainViewModel;
+    function MainController(ApplicationState) {
+        this.vm = ApplicationState;
     }
 })();

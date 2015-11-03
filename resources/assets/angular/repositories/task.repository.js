@@ -16,21 +16,21 @@
         };
 
         // Implementation
-        function all(model) {
+        function all(state) {
             $http.get('/task').success(function(data) {
-                model.setAllProjects(data);
+                state.setAllProjects(data);
             });
         }
 
-        function find(taskID, model) {
+        function find(taskID, state) {
             $http.get('/task/'+taskID).success(function(data) {
-                model.setCurrentTask(data);
+                state.setCurrentTask(data);
             });
         }
 
-        function byProject(id, model) {
+        function byProject(id, state) {
             $http.get('/project/'+id+'/tasks').success(function(data) {
-                model.tasks = data;
+                state.tasks = data;
             });
         }
 
