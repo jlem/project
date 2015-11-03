@@ -28,7 +28,7 @@
             $http.get('/project/'+id+'/tasks').success(success);
         }
 
-        function authUser(model) {
+        function authUser(success) {
             $http.get('/user/tasks').success(success);
         }
     }
